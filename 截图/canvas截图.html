@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="layout" content="main">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="./html2canvas.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".example1").on("click", function(event) {
+					event.preventDefault();
+					html2canvas(document.body, {
+
+						allowTaint: true,
+						taintTest: false,
+						onrendered: function(canvas) {
+							canvas.id = "mycanvas";
+							//生成base64图片数据
+							var dataUrl = canvas.toDataURL();
+							console.log(dataUrl)
+							var newImg = document.createElement("img");
+							newImg.src = dataUrl;
+							$('html').html(newImg)
+						}
+					});
+				});
+
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<div class="" style="background-color: #eee;height: 500px;font-size: 5vw;">
+			欢迎和dino一起用html5截图
+			<img src="1.png" alt="" />
+		</div>
+		<input class="example1" type="button" value="点击截图" style="height: 10vw;font-size: 5vw;">
+	</body>
+
+</html>
