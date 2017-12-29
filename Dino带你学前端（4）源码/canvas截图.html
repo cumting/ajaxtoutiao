@@ -12,7 +12,6 @@
 				$(".example1").on("click", function(event) {
 					event.preventDefault();
 					html2canvas(document.body, {
-
 						allowTaint: true,
 						taintTest: false,
 						onrendered: function(canvas) {
